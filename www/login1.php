@@ -61,8 +61,8 @@ ini_set('display_errors', 1);
 //echo md5("pa55w0rd");
 
 if (!empty($_REQUEST['uid'])) {
-$username = ($_REQUEST['uid']);
-$pass = $_REQUEST['password'];
+$username = mysqli_real_escape_string($con,$_REQUEST['uid']);
+$pass = mysqli_real_escape_string($con,$_REQUEST['password']);
 
 $q = "SELECT * FROM users where username='".$username."' AND password = '".md5($pass)."'" ;
 
